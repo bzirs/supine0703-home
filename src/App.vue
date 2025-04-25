@@ -25,15 +25,7 @@
       >
         <component :is="store.mobileOpenState ? CloseSmall : HamburgerButton" />
       </Icon>
-      <!-- Mode by 申明列表 -->
-      <Transition name="fade" mode="out-in">
-        <div class="made-by">
-          <ProjInfo @click.stop
-            :class="'mb-base mb-' + (store.madeByIsOpen ? 'on' : (store.madeByIsHover ? 'mid' : 'off'))" 
-          />
-          <div class="mb-tip">👈 点击展开</div>
-        </div>
-      </Transition>
+
       <!-- 页脚 -->
       <Transition name="fade" mode="out-in">
         <Footer class="f-ter" v-show="!store.backgroundShow && !store.setOpenState" />
@@ -56,8 +48,6 @@ import Box from "@/views/Box/index.vue";
 import MoreSet from "@/views/MoreSet/index.vue";
 import cursorInit from "@/utils/cursor.js";
 import config from "@/../package.json";
-import { logInfos, currentInfo as cInfo } from "@/utils/updateInfo.js";
-import ProjInfo from "@/components/ProjInfo.vue";
 
 const store = mainStore();
 
@@ -124,8 +114,6 @@ onMounted(() => {
   getWidth();
   window.addEventListener("resize", getWidth);
 
-  // 控制台输出
-  logInfos();
 });
 
 onBeforeUnmount(() => {
